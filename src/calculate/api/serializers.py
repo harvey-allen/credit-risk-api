@@ -7,3 +7,6 @@ class CreditParametersSerializer(serializers.ModelSerializer):
     class Meta:
         model = CreditParameters
         fields = "__all__"
+
+    def validate(self, attrs):
+        pass
