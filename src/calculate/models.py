@@ -11,12 +11,12 @@ class CreditStatus(models.TextChoices):
 
 
 class PaymentBehaviour(models.TextChoices):
-    LSSV = "Low_spent_Small_value_payments", _("Low Spend and small value payments")
-    LSMV = "Low_spent_Medium_value_payments", _("Low Spend and medium value payments")
-    LSLV = "Low_spent_Large_value_payments", _("Low Spend and large value payments")
-    HSSV = "High_spent_Small_value_payments", _("High Spend and small value payments")
-    HSMV = "High_spent_Medium_value_payments", _("High Spend and medium value payments")
-    HSLV = "High_spent_Large_value_payments", _("High Spend and large value payments")
+    LSSV = "low_spend_small_value_payments", _("Low Spend and small value payments")
+    LSMV = "low_spend_medium_value_payments", _("Low Spend and medium value payments")
+    LSLV = "low_spend_large_value_payments", _("Low Spend and large value payments")
+    HSSV = "high_spend_small_value_payments", _("High Spend and small value payments")
+    HSMV = "high_spend_medium_value_payments", _("High Spend and medium value payments")
+    HSLV = "high_spend_large_value_payments", _("High Spend and large value payments")
 
 
 class CreditParameters(models.Model):
@@ -25,7 +25,6 @@ class CreditParameters(models.Model):
     name = models.CharField(max_length=100)
     month = models.CharField(max_length=10)
     occupation = models.CharField(max_length=100)
-    type_of_loans = models.CharField(max_length=100)
     delay_from_due_date = models.CharField(max_length=10)
     credit_mix = models.CharField(max_length=100)
     payment_of_minimum_amount = models.CharField(max_length=10)
@@ -64,3 +63,26 @@ class CreditParameters(models.Model):
 
     def save(self, *args, **kwargs):
         super(CreditParameters, self).save(*args, **kwargs)
+
+
+class CreditLoans(models.Model):
+
+    class LoanTypes(models.TextChoices):
+        AUTO = "auto_loan", _("Auto Loan")
+        CREDIT_BUILDER = "credit_builder_loan", _("Credit Builder Loan")
+        PERSONAL = "personal_loan", _("Personal Loan")
+        HOME_EQUITY = "home_equity_loan", _("Home Equity Loan")
+        MORTGAGE = "mortgage_loan", _("Mortgage Loan")
+        STUDENT = "student_loan", _("Student Loan")
+        DEBT_CONSOLIDATION = "debt_consolidation_loan", _("Debt Consolidation Loan")
+        PAYDAY = "payday_loan", _("Payday Loan")
+        NOT_SPECIFIED = "non_specified_loan", _("Not Specified")
+
+    credit_check = models.ForeignKey(CreditParameters, on_delete=models.CASCADE)
+    loan_type = models.CharField(
+        max_length=20,
+        choices=CreditStatus.choices,
+        verbose_name="loan type",
+        default=LoanTypes.NOT_SPECIFIED
+    )
+
