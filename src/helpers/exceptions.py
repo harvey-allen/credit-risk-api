@@ -1,0 +1,2 @@
+class CreditValueException(Exception):
+    pass
