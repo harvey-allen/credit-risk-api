@@ -10,6 +10,15 @@ class CreditStatus(models.TextChoices):
     GOOD = "good", _("Good Credit")
 
 
+class PaymentBehaviour(models.TextChoices):
+    LSSV = "Low_spent_Small_value_payments", _("Low Spend and small value payments")
+    LSMV = "Low_spent_Medium_value_payments", _("Low Spend and medium value payments")
+    LSLV = "Low_spent_Large_value_payments", _("Low Spend and large value payments")
+    HSSV = "High_spent_Small_value_payments", _("High Spend and small value payments")
+    HSMV = "High_spent_Medium_value_payments", _("High Spend and medium value payments")
+    HSLV = "High_spent_Large_value_payments", _("High Spend and large value payments")
+
+
 class CreditParameters(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # Categorical Features
@@ -19,8 +28,14 @@ class CreditParameters(models.Model):
     type_of_loans = models.CharField(max_length=100)
     delay_from_due_date = models.CharField(max_length=10)
     credit_mix = models.CharField(max_length=100)
-    payment_of_min_amount = models.CharField(max_length=10)
-    payment_behaviour = models.CharField(max_length=100)
+    payment_of_minimum_amount = models.CharField(max_length=10)
+    payment_behaviour = models.CharField(
+        max_length=50,
+        choices=CreditStatus.choices,
+        verbose_name="qualification type",
+        blank=True,
+        null=True,
+    )
     changed_credit_limit = models.CharField(max_length=10)
     credit_history_age = models.CharField(max_length=100)
     # Numerical Features
@@ -39,7 +54,7 @@ class CreditParameters(models.Model):
     amount_invested_monthly = models.DecimalField(max_digits=10, decimal_places=2)
     monthly_balance = models.DecimalField(max_digits=10, decimal_places=2)
     # Result
-    models.CharField(
+    credit_score = models.CharField(
         max_length=20,
         choices=CreditStatus.choices,
         verbose_name="qualification type",
