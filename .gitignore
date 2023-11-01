@@ -1,0 +1,87 @@
+# Python and Django specific files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+__init__.py
+
+# Virtual environment
+venv/
+.env
+
+# Log files
+*.log
+
+# Database files
+db.sqlite3
+
+# Secret keys and configuration files
+*.secret_key
+*.settings
+
+# Static and media files
+static/
+media/
+
+# User-uploaded files
+uploads/
+
+# Compiled Python files
+*.pyc
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.komodoproject
+Thumbs.db
+.DS_Store
+
+# Dependency directories
+node_modules/
+__pycache__/
+
+# Compiled source files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Miscellaneous
+*.bak
+*.swp
+*.tmp
+
+# .DS_Store files (created by macOS)
+.DS_Store
+
+# Caches
+__pycache__/
+cache/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+
+# System files
+Icon?
+Thumbs.db
+ehthumbs.db
+
+# Python bytecode
+*.pyc
+
+# Database files
+*.sqlite3
+
+# Test database
+test_db.sqlite3
+
+# Local settings
+local_settings.py
+
+# Django Debug Toolbar
+__djdt_toolbar/
