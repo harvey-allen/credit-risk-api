@@ -67,8 +67,8 @@ Before you begin, ensure you have met the following requirements:
 
 ## API Endpoints
 
-- List credit parameters: `/api/credit-parameters/`
-- Create credit parameter: `/api/credit-parameters/create/`
+- List credit parameters: `/api/calculate/`
+- Create credit parameter: `/api/calculate/create/`
 
 For detailed API documentation, refer to the API documentation (link here).
 
