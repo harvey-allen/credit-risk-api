@@ -1,6 +1,6 @@
-# Django Credit Scoring Application
+# Django REST Credit Scoring API
 
-This Django application calculates credit scores based on various credit risk parameters. Users can input both categorical and numerical data to obtain a credit score.
+This Django REST framework API calculates credit scores based on various credit risk parameters. Users can input both categorical and numerical data to obtain a credit score.
 
 ## Table of Contents
 
