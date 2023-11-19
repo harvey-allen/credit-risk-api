@@ -1,5 +1,5 @@
-import pickle
 import logging
+import pickle
 
 from django.db import transaction
 from rest_framework import viewsets
@@ -25,7 +25,7 @@ class CreditParametersViewSet(viewsets.ModelViewSet):
         - serializer_class: The serializer class to be used for data serialization.
     """
 
-    log = logging.getLogger('credit_parameters')
+    log = logging.getLogger("credit_parameters")
 
     queryset = CreditParameters.objects.all()
     serializer_class = CreditParametersSerializer
@@ -36,6 +36,8 @@ class CreditParametersViewSet(viewsets.ModelViewSet):
         data = serializer.validated_data
         credit_prediction = model.predict(data)
         with transaction.atomic():
-            self.log.info(f"{data[id]} has a predicted credit score of {credit_prediction}.")
+            self.log.info(
+                f"{data[id]} has a predicted credit score of {credit_prediction}."
+            )
             data["credit_score"] = credit_prediction
             serializer.save()

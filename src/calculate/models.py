@@ -66,7 +66,6 @@ class CreditParameters(models.Model):
 
 
 class CreditLoans(models.Model):
-
     class LoanTypes(models.TextChoices):
         AUTO = "auto_loan", _("Auto Loan")
         CREDIT_BUILDER = "credit_builder_loan", _("Credit Builder Loan")
@@ -83,6 +82,5 @@ class CreditLoans(models.Model):
         max_length=20,
         choices=CreditStatus.choices,
         verbose_name="loan type",
-        default=LoanTypes.NOT_SPECIFIED
+        default=LoanTypes.NOT_SPECIFIED,
     )
-
