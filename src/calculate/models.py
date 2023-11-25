@@ -3,6 +3,8 @@ import uuid
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from users.models import User
+
 
 class CreditStatus(models.TextChoices):
     POOR = "poor", _("Poor Credit")
@@ -21,8 +23,8 @@ class PaymentBehaviour(models.TextChoices):
 
 class CreditParameters(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     # Categorical Features
-    name = models.CharField(max_length=100)
     month = models.CharField(max_length=10)
     occupation = models.CharField(max_length=100)
     delay_from_due_date = models.CharField(max_length=10)
@@ -31,9 +33,7 @@ class CreditParameters(models.Model):
     payment_behaviour = models.CharField(
         max_length=50,
         choices=CreditStatus.choices,
-        verbose_name="qualification type",
-        blank=True,
-        null=True,
+        verbose_name="credit type",
     )
     changed_credit_limit = models.CharField(max_length=10)
     credit_history_age = models.CharField(max_length=100)
