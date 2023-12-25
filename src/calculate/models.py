@@ -32,8 +32,8 @@ class CreditParameters(models.Model):
     payment_of_minimum_amount = models.CharField(max_length=10)
     payment_behaviour = models.CharField(
         max_length=50,
-        choices=CreditStatus.choices,
-        verbose_name="credit type",
+        choices=PaymentBehaviour.choices,
+        verbose_name="payment behaviour",
     )
     changed_credit_limit = models.CharField(max_length=10)
     credit_history_age = models.CharField(max_length=100)
