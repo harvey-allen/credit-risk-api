@@ -38,9 +38,9 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/harvey-allen/credit-risk-model.git
-   cd credit-scoring-app
-
+   git clone https://github.com/harvey-allen/credit-risk-api.git
+   cd credit-risk-api
+   
 2. Install project dependencies:
    ```bash
    pip install -r requirements.txt
@@ -71,11 +71,6 @@ Before you begin, ensure you have met the following requirements:
 - Create credit parameter: `/api/calculate/create/`
 
 For detailed API documentation, refer to the API documentation (link here).
-
-## Customization
-
-- Implement your custom credit scoring model.
-- Modify the model fields and validation in `serializers.py` for specific requirements.
 
 ## Contributing
 
